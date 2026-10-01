@@ -1,6 +1,6 @@
 /* Trend Delivery Service - compatible frontend */
 "use strict";
-
+console.log("TREND APP.JS LOADED");
 let TOKEN = localStorage.getItem("trend_token") || "";
 let LANG = localStorage.getItem("trend_lang") || "ar";
 
