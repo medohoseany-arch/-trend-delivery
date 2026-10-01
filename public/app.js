@@ -164,15 +164,9 @@ const loginBtn = document.querySelector("#login button");
 
 if (loginBtn) {
   loginBtn.type = "button";
-
-  loginBtn.addEventListener("click", async function () {
-    msg("loginMsg", "تم الضغط على زر الدخول... جاري الاتصال بالسيرفر", "ok");
-
-    try {
-      await login();
-    } catch (e) {
-      msg("loginMsg", "خطأ: " + (e?.message || e), "error");
-    }
+  loginBtn.addEventListener("click", function () {
+    console.log("LOGIN BUTTON CLICKED");
+    login();
   });
 }
 function logout() {
