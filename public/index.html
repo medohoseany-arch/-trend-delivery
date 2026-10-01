@@ -1,173 +1,154 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Trend Delivery Service</title>
-<link rel="stylesheet" href="/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Trend Delivery Service</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
 
-<div id="login" class="center">
-  <div class="card login-card">
-    <h1>Trend Delivery Service</h1>
-    <p class="muted">تسجيل الدخول للنظام</p>
+  <!-- LOGIN -->
+  <div id="login" class="center">
 
-    <input
-      id="email"
-      type="email"
-      placeholder="البريد الإلكتروني"
-      autocomplete="username"
-    >
+    <div class="card login-card">
 
-    <input
-      id="password"
-      type="password"
-      placeholder="كلمة المرور"
-      autocomplete="current-password"
-    >
+      <h1>Trend Delivery Service</h1>
 
-    <script>
-async function directLogin() {
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
-  const msg = document.getElementById("loginMsg");
+      <p class="muted">تسجيل الدخول للنظام</p>
 
-  msg.textContent = "جاري الاتصال بالسيرفر...";
-  msg.className = "msg";
+      <input
+        id="email"
+        type="email"
+        placeholder="البريد الإلكتروني"
+        autocomplete="username"
+      >
 
-  try {
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password
-      })
-    });
+      <input
+        id="password"
+        type="password"
+        placeholder="كلمة المرور"
+        autocomplete="current-password"
+      >
 
-    const text = await response.text();
+      <button
+        id="loginBtn"
+        type="button"
+        onclick="login()"
+      >
+        دخول
+      </button>
 
-    console.log("LOGIN STATUS:", response.status);
-    console.log("LOGIN RESPONSE:", text);
+      <div id="loginMsg" class="msg"></div>
 
-    let data;
-
-    try {
-      data = JSON.parse(text);
-    } catch {
-      data = { error: text };
-    }
-
-    if (!response.ok) {
-      throw new Error(data.error || data.message || "فشل تسجيل الدخول");
-    }
-
-    if (!data.token) {
-      throw new Error("السيرفر لم يرجع token");
-    }
-
-    localStorage.setItem("trend_token", data.token);
-
-    document.getElementById("login").classList.add("hidden");
-    document.getElementById("app").classList.remove("hidden");
-
-    msg.textContent = "تم تسجيل الدخول بنجاح";
-
-    if (typeof show === "function") {
-      show("dashboard");
-    }
-
-  } catch (error) {
-    console.error("DIRECT LOGIN ERROR:", error);
-    msg.textContent = "خطأ: " + error.message;
-    msg.className = "msg error";
-  }
-}
-</script>
-
-    <div id="loginMsg" class="msg"></div>
-  </div>
-</div>
-
-<div id="app" class="hidden">
-
-  <header>
-    <div class="brand">Trend Delivery Service</div>
-
-    <div class="header-actions">
-      <button class="ghost" onclick="toggleLang()">AR / EN</button>
-      <button class="danger" onclick="logout()">خروج</button>
     </div>
-  </header>
-
-  <div class="layout">
-
-    <aside id="sidebar">
-
-      <button onclick="show('dashboard')">
-        🏠 لوحة التحكم
-      </button>
-
-      <button onclick="show('order')">
-        ➕ إدخال أوردر
-      </button>
-
-      <button onclick="show('search')">
-        🔎 بحث
-      </button>
-
-      <button onclick="show('shipments')">
-        📦 الشحنات
-      </button>
-
-      <button onclick="show('jobs')">
-        🚚 مهام التوصيل
-      </button>
-
-      <button onclick="show('jobcode')">
-        🔢 تحديث كود مهمة التوصيل
-      </button>
-
-      <button onclick="show('returns')">
-        ↩️ المرتجعات للتاجر
-      </button>
-
-      <button onclick="show('merchants')">
-        🏪 التجار
-      </button>
-
-      <button onclick="show('drivers')">
-        🧑‍✈️ السائقون
-      </button>
-
-      <button onclick="show('areas')">
-        📍 الإمارات والمناطق
-      </button>
-
-      <button onclick="show('accounting')">
-        💰 الحسابات
-      </button>
-
-      <button onclick="show('expenses')">
-        ⛽ مصروفات السائق
-      </button>
-
-      <button onclick="show('audit')">
-        🧾 سجل العمليات
-      </button>
-
-    </aside>
-
-    <main id="content"></main>
 
   </div>
-</div>
 
-<!-- نسخة جديدة من app.js لمنع تحميل النسخة القديمة من الكاش -->
-<script src="/app.js?v=20261001"></script>
+
+  <!-- APP -->
+  <div id="app" class="hidden">
+
+    <header>
+
+      <div class="brand">
+        Trend Delivery Service
+      </div>
+
+      <div class="header-actions">
+
+        <button
+          class="ghost"
+          onclick="toggleLang()"
+        >
+          AR / EN
+        </button>
+
+        <button
+          class="danger"
+          onclick="logout()"
+        >
+          خروج
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <div class="layout">
+
+      <!-- SIDEBAR -->
+      <aside id="sidebar">
+
+        <button onclick="show('dashboard')">
+          🏠 لوحة التحكم
+        </button>
+
+        <button onclick="show('order')">
+          ➕ إدخال أوردر
+        </button>
+
+        <button onclick="show('search')">
+          🔎 بحث
+        </button>
+
+        <button onclick="show('shipments')">
+          📦 الشحنات
+        </button>
+
+        <button onclick="show('jobs')">
+          🚚 مهام التوصيل
+        </button>
+
+        <button onclick="show('jobcode')">
+          🔢 تحديث كود مهمة التوصيل
+        </button>
+
+        <button onclick="show('returns')">
+          ↩️ المرتجعات للتاجر
+        </button>
+
+        <button onclick="show('merchants')">
+          🏪 التجار
+        </button>
+
+        <button onclick="show('drivers')">
+          🧑‍✈️ السائقون
+        </button>
+
+        <button onclick="show('areas')">
+          📍 الإمارات والمناطق
+        </button>
+
+        <button onclick="show('accounting')">
+          💰 الحسابات
+        </button>
+
+        <button onclick="show('expenses')">
+          ⛽ مصروفات السائق
+        </button>
+
+        <button onclick="show('audit')">
+          🧾 سجل العمليات
+        </button>
+
+      </aside>
+
+
+      <!-- CONTENT -->
+      <main id="content"></main>
+
+    </div>
+
+  </div>
+
+
+  <!-- CURRENT APP.JS -->
+  <script src="/app.js?v=20261001"></script>
 
 </body>
+
 </html>
