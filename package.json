@@ -1,0 +1,16 @@
+{
+  "name": "trend-delivery",
+  "version": "1.0.0",
+  "description": "Trend Delivery - users, roles, orders, driver app and internal chat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "dotenv": "^17.2.2"
+  }
+}
