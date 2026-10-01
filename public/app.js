@@ -118,6 +118,7 @@ function toggleLang() {
 
 
 async function login() {
+  
   const email = $("email");
   const password = $("password");
 
@@ -159,7 +160,21 @@ async function login() {
     if (button) button.disabled = false;
   }
 }
+const loginBtn = document.querySelector("#login button");
 
+if (loginBtn) {
+  loginBtn.type = "button";
+
+  loginBtn.addEventListener("click", async function () {
+    msg("loginMsg", "تم الضغط على زر الدخول... جاري الاتصال بالسيرفر", "ok");
+
+    try {
+      await login();
+    } catch (e) {
+      msg("loginMsg", "خطأ: " + (e?.message || e), "error");
+    }
+  });
+}
 function logout() {
   TOKEN = "";
   localStorage.removeItem("trend_token");
