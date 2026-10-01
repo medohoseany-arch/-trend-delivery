@@ -559,18 +559,16 @@ window.addEventListener("unhandledrejection",e=>console.error("FRONTEND PROMISE 
 
 document.addEventListener("DOMContentLoaded",()=>{
   applyLanguage();
+const loginBtn = document.querySelector("#login button");
 
-  const loginBtn = document.querySelector("#login button");
-
-  if (loginBtn) {
-    loginBtn.type = "button";
-
-    loginBtn.addEventListener("click", function () {
-      console.log("LOGIN BUTTON CLICKED");
-      login();
-    });
-  }
-
+if (loginBtn) {
+  loginBtn.type = "button";
+  loginBtn.addEventListener("click", function () {
+    console.log("LOGIN BUTTON CLICKED");
+    login();
+  });
+}
+  
   const sidebar = $("sidebar");
   sidebar?.querySelectorAll("button").forEach(btn=>{
     const raw = btn.getAttribute("onclick") || "";
