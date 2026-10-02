@@ -1,0 +1,148 @@
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f3f6fa;color:#172033}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:11px 15px;background:#1f5eff;color:white;font-weight:700}button:hover{opacity:.92}.danger{background:#d9363e}.ghost{background:#eef3ff;color:#1f5eff}.center{min-height:100vh;display:grid;place-items:center}.card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 8px 30px #00000012}.login-card{width:min(420px,92vw);display:grid;gap:12px}.login-card h1{text-align:center}.hidden{display:none!important}.muted{color:#687386}.msg{min-height:22px}.ok{color:#14804a}.error{color:#c22}.warn{color:#a46a00}.header-actions{display:flex;gap:8px}.brand{font-size:21px;font-weight:800}.layout{display:flex;flex-direction:column;min-height:calc(100vh - 70px)}
+.top-nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #e4e8ef;display:flex;align-items:center;gap:8px;padding:10px 18px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;box-shadow:0 3px 12px #00000008;scrollbar-width:thin}
+.top-nav button{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:42px;background:#f7f9fc;color:#27334a;text-align:center;border:1px solid #e5eaf2}
+.top-nav button:hover,.top-nav button.active{background:#e9efff;color:#1f5eff;border-color:#cbd9ff}
+.top-nav .nav-icon{width:20px;height:20px;min-width:20px;display:inline-flex;align-items:center;justify-content:center}
+.top-nav .nav-icon svg{width:18px;height:18px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+header{height:70px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid #e4e8ef}aside{display:none}aside button{background:#f7f9fc;color:#27334a;text-align:right}aside button:hover{background:#e9efff;color:#1f5eff}main{padding:24px;min-width:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}.stat{background:#fff;border-radius:16px;padding:20px;box-shadow:0 5px 18px #0000000b}.stat b{font-size:28px;display:block;margin-top:8px}.panel{background:#fff;border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 5px 18px #0000000b}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.form-grid .full{grid-column:1/-1}label{font-weight:700;font-size:13px;display:grid;gap:6px}input,select,textarea{width:100%;padding:12px;border:1px solid #d8deea;border-radius:10px;background:#fff}textarea{min-height:90px;resize:vertical}.row{display:flex;gap:10px;align-items:end;flex-wrap:wrap}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px solid #e8ebf1;text-align:right;white-space:nowrap}.badge{display:inline-block;border-radius:20px;padding:4px 9px;background:#eef3ff;color:#1f5eff}.duplicate{color:#b35c00;font-weight:800}.actions{display:flex;gap:8px;flex-wrap:wrap}@media(max-width:800px){.top-nav{padding:8px 10px;gap:6px}.top-nav button{min-height:40px;padding:9px 12px;font-size:13px}.top-nav .nav-icon{display:none}main{padding:14px}.form-grid{grid-template-columns:1fr}header{padding:0 12px}.brand{font-size:16px}}
+
+/* FIX: keep navigation icons small and aligned */
+.nav-icon{width:20px;height:20px;min-width:20px;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
+.nav-icon svg{width:18px;height:18px;max-width:18px;max-height:18px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+aside button{display:flex;align-items:center;gap:9px}
+
+
+/* Final UI fixes */
+.current-user{display:inline-flex;align-items:center;margin-right:12px;padding:5px 10px;border-radius:999px;background:#eef3ff;color:#1f5eff;font-size:13px;font-weight:800;vertical-align:middle}
+aside button{display:flex;align-items:center;gap:9px;min-height:42px}
+.nav-icon{width:20px!important;height:20px!important;min-width:20px!important;max-width:20px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 20px!important}
+.nav-icon svg{width:18px!important;height:18px!important;max-width:18px!important;max-height:18px!important;min-width:18px!important;min-height:18px!important;display:block!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+@media(max-width:800px){.current-user{font-size:11px;margin-right:6px;padding:4px 7px}.brand{font-size:14px}}
+
+
+/* FINAL FIX 2026-10-02: compact navigation icons + visible username */
+.current-user{white-space:nowrap;max-width:240px;overflow:hidden;text-overflow:ellipsis}
+aside button .nav-icon, aside button .nav-icon svg{width:20px!important;height:20px!important;min-width:20px!important;max-width:20px!important;min-height:20px!important;max-height:20px!important}
+aside button .nav-icon svg{display:block!important;overflow:visible!important}
+aside button{font-size:14px!important;line-height:1.2!important}
+@media(max-width:800px){aside button{font-size:13px!important;min-height:42px!important}.current-user{max-width:150px}}
+
+/* TOP ORDER STATUS BAR - delivery control view */
+.status-bar{display:flex;gap:6px;overflow-x:auto;margin:16px 0 0;padding:6px 0 2px;white-space:nowrap;scrollbar-width:thin}
+.status-tab{flex:0 0 auto;background:#f5f7fa;color:#303b4f;border:1px solid #e1e6ee;border-radius:7px;padding:8px 12px;display:inline-flex;gap:7px;align-items:center;font-size:11px;font-weight:800}
+.status-tab b{font-size:12px}
+.status-tab.active{background:#20242a;color:#fff;border-color:#20242a}
+#shipmentsTable th{background:#f7f9fc;position:sticky;top:0;z-index:2;font-size:12px}
+#shipmentsTable td{font-size:12px}
+.clickable{cursor:pointer}
+.clickable:hover{background:#f8faff}
+@media(max-width:800px){.status-bar{margin-top:12px}.status-tab{padding:8px 10px;font-size:10px}#shipmentsTable th,#shipmentsTable td{padding:9px 10px}}
+
+/* Shipment row actions + duplicate order */
+.shipment-actions{display:flex;align-items:center;gap:6px;min-width:230px}
+.icon-action{display:inline-flex;align-items:center;justify-content:center;gap:5px;border:1px solid #d8deea;background:#fff;color:#27334a;border-radius:9px;padding:7px 9px;cursor:pointer;font-weight:700;font-size:12px;white-space:nowrap}
+.icon-action:hover{background:#f3f6fb}
+.icon-action span{display:inline-block}
+.duplicate-notice{margin:0 0 12px;padding:12px 14px;border-radius:10px;background:#fff6df;border:1px solid #f1d28a;color:#7a5700;font-weight:700}
+@media(max-width:800px){.shipment-actions{min-width:205px}.icon-action{padding:7px 8px;font-size:11px}}
+
+/* FINAL COMPACT UI: smaller icons and driver page */
+.top-nav .nav-icon,.nav-icon{width:16px!important;height:16px!important;min-width:16px!important;max-width:16px!important;flex:0 0 16px!important}
+.top-nav .nav-icon svg,.nav-icon svg{width:14px!important;height:14px!important;min-width:14px!important;min-height:14px!important;max-width:14px!important;max-height:14px!important;stroke-width:1.6!important}
+.top-nav button{min-height:36px!important;padding:7px 10px!important;gap:5px!important;font-size:12px!important;border-radius:8px!important}
+.icon-action{padding:5px 7px!important;font-size:11px!important;border-radius:7px!important;gap:4px!important}
+.shipment-actions{min-width:205px!important;gap:4px!important}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.panel-head h3{margin:0}
+.driver-form-panel .actions{margin-top:12px}.small-btn{padding:8px 11px!important;font-size:12px!important;border-radius:8px!important}
+.empty-state{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:#687386;text-align:center;border:1px dashed #d8deea;border-radius:12px;padding:20px}.empty-state strong{color:#27334a}.empty-icon{width:34px;height:34px;display:grid;place-items:center}.empty-icon svg{width:28px;height:28px;stroke:currentColor;fill:none}
+
+/* ===== FINAL NAVIGATION OVERRIDE 2026-10-03 ===== */
+.top-nav{
+  width:100%!important;
+  display:flex!important;
+  flex-direction:row!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:6px!important;
+  padding:8px 12px!important;
+  margin:0!important;
+  background:#ffffff!important;
+  border-bottom:1px solid #e4e8ef!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  white-space:nowrap!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+.top-nav button,
+.top-nav button:hover,
+.top-nav button.active{
+  box-sizing:border-box!important;
+  flex:0 0 auto!important;
+  display:inline-flex!important;
+  width:auto!important;
+  min-width:max-content!important;
+  max-width:none!important;
+  height:38px!important;
+  min-height:38px!important;
+  max-height:38px!important;
+  padding:6px 11px!important;
+  margin:0!important;
+  gap:6px!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:8px!important;
+  border:1px solid #e1e6ee!important;
+  background:#f7f9fc!important;
+  color:#27334a!important;
+  font-size:12px!important;
+  line-height:1!important;
+  font-weight:700!important;
+  box-shadow:none!important;
+  white-space:nowrap!important;
+}
+.top-nav button:hover,
+.top-nav button.active{
+  background:#e9efff!important;
+  color:#1f5eff!important;
+  border-color:#cbd9ff!important;
+}
+.top-nav .nav-icon{
+  display:inline-flex!important;
+  flex:0 0 16px!important;
+  width:16px!important;
+  height:16px!important;
+  min-width:16px!important;
+  max-width:16px!important;
+  min-height:16px!important;
+  max-height:16px!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.top-nav .nav-icon svg{
+  display:block!important;
+  width:15px!important;
+  height:15px!important;
+  min-width:15px!important;
+  max-width:15px!important;
+  min-height:15px!important;
+  max-height:15px!important;
+  fill:none!important;
+  stroke:currentColor!important;
+  stroke-width:1.8!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+@media(max-width:800px){
+  .top-nav{padding:7px 8px!important;gap:5px!important}
+  .top-nav button,.top-nav button:hover,.top-nav button.active{
+    height:34px!important;
+    min-height:34px!important;
+    max-height:34px!important;
+    padding:5px 9px!important;
+    font-size:11px!important;
+    border-radius:7px!important;
+  }
+  .top-nav .nav-icon{width:15px!important;height:15px!important;min-width:15px!important;flex-basis:15px!important}
+  .top-nav .nav-icon svg{width:14px!important;height:14px!important;min-width:14px!important;min-height:14px!important}
+}
