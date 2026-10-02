@@ -1,0 +1,6 @@
+{
+  "name": "trend-delivery-service",
+  "version": "2026.10.02-upgrade",
+  "private": true,
+  "scripts": {"start":"node server.js"}
+}
