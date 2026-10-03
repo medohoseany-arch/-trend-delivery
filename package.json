@@ -2,10 +2,10 @@
   "name": "trend-delivery-service",
   "version": "1.0.0",
   "private": true,
-  "main": "app/server.js",
-  "scripts": {
-    "start": "node app/server.js"
-  },
+  ""main": "server.js",
+"scripts": {
+  "start": "node server.js"
+}
   "engines": {
     "node": ">=20"
   }
