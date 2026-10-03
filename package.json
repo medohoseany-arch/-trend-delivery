@@ -1,9 +1,9 @@
-
-    {
+{
   "name": "trend-delivery-service",
   "version": "1.0.0",
   "description": "Trend Delivery Service",
   "main": "server.js",
+  "private": true,
   "scripts": {
     "start": "node server.js"
   },
