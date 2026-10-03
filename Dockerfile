@@ -10,6 +10,8 @@ COPY server.js ./
 COPY public ./public
 COPY schema.sql ./
 
+RUN test -f /app/server.js
+
 ENV NODE_ENV=production
 ENV PORT=3000
 
