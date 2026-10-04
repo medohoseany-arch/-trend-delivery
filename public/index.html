@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Trend Delivery Service</title>
+  <link rel="stylesheet" href="/styles.css?v=20261003.6">
+</head>
+
+<body>
+
+  <!-- LOGIN -->
+  <div id="login" class="center">
+
+    <div class="card login-card">
+
+      <h1>Trend Delivery Service</h1>
+
+      <p class="muted">تسجيل الدخول للنظام</p>
+
+      <input
+        id="username"
+        type="text"
+        placeholder="اسم المستخدم"
+        autocomplete="username"
+      >
+
+      <input
+        id="password"
+        type="password"
+        placeholder="كلمة المرور"
+        autocomplete="current-password"
+      >
+
+      <button id="loginBtn" type="button" onclick="login()">
+        دخول
+      </button>
+
+      <div id="loginMsg" class="msg"></div>
+    </div>
+
+  </div>
+
+
+  <!-- APP -->
+  <div id="app" class="hidden">
+
+    <header>
+
+      <div class="brand brand-with-logo">
+        <div class="brand-logo-wrap"><img src="/trend-logo.jpeg" alt="Trend Express"></div>
+        <div class="brand-user">
+          <strong>Trend Delivery Service</strong>
+          <span id="currentUserName">—</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+
+        <button
+          class="ghost"
+          onclick="toggleLang()"
+        >
+          AR / EN
+        </button>
+
+        <button
+          class="danger"
+          onclick="logout()"
+        >
+          خروج
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <div class="layout">
+
+      <!-- SIDEBAR -->
+      <aside id="sidebar">
+
+        <button onclick="show('dashboard')">
+          لوحة التحكم
+        </button>
+
+        <button onclick="show('order')">
+          إدخال أوردر
+        </button>
+
+        <button onclick="show('search')">
+          بحث
+        </button>
+
+        <button onclick="show('shipments')">
+          الشحنات
+        </button>
+
+        <button onclick="show('jobs')">
+          مهام التوصيل
+        </button>
+
+        <button onclick="show('jobcode')">
+          تحديث كود مهمة التوصيل
+        </button>
+
+        <button onclick="show('returns')">
+          المرتجعات للتاجر
+        </button>
+
+        <button onclick="show('merchants')">
+          التجار
+        </button>
+
+        <button onclick="show('drivers')">
+          السائقون
+        </button>
+
+        <button onclick="show('areas')">
+          الإمارات والمناطق
+        </button>
+
+        <button onclick="show('accounting')">
+          الحسابات
+        </button>
+<button onclick="show('audit')">
+          سجل العمليات
+        </button>
+
+      </aside>
+
+
+      <!-- CONTENT -->
+      <main id="content"></main>
+
+    </div>
+
+      <footer class="site-footer">Designed by <strong>Mohamed Hoseany</strong></footer>
+
+  </div>
+
+
+  <!-- CURRENT APP.JS -->
+  <script src="/app.js?v=20261003.6"></script>
+
+</body>
+
+</html>
